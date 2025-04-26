@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # 🌐 Three-Tier Web Application Infrastructure with Terraform
 
 This project demonstrates a fully automated and scalable **three-tier architecture** on AWS using **Terraform**.  
@@ -39,3 +40,6 @@ It includes a **frontend load balancer**, **Nginx-based application layer**, and
 
 
 
+=======
+# terraform-3tier-architecture-
+>>>>>>> 7b9bab29281cad107ae777ed67a50074a64a617c
