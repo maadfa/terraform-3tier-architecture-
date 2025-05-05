@@ -44,7 +44,9 @@ It includes a **frontend load balancer**, **Nginx-based application layer**, and
 ## Step by Step guide 
 
 Building a Three-Tier Web Application Infrastructure with Terraform on AWS
+
 📘 Overview
+
 This guide walks you through creating a three-tier architecture on AWS using Terraform, which includes:
 
 Frontend Layer: Application Load Balancer (ALB)
@@ -82,17 +84,22 @@ terraform-3tier-architecture/
 │   ├── ec2/
 │   ├── alb/
 │   └── rds/
+
+
 Each module contains its own main.tf, variables.tf, and outputs.tf.
+
 
 🧱 Step 1: Create VPC Module
 Create modules/vpc/ with:
 
 
 # modules/vpc/main.tf
+
 resource "aws_vpc" "main" {
   cidr_block = var.vpc_cidr
   tags = { Name = "main-vpc" }
 }
+
 Include resources for:
 
 Public & private subnets
@@ -103,7 +110,10 @@ NAT Gateway
 
 Route Tables
 
+
 🖥️ Step 2: Create EC2 Module
+
+
 In modules/ec2/:
 
 
@@ -117,9 +127,14 @@ resource "aws_instance" "app" {
 
   user_data = file("${path.module}/install_nginx.sh")
 }
+
+
 install_nginx.sh contains shell script to install and start Nginx.
 
+
 ⚖️ Step 3: Create Load Balancer Module
+
+
 In modules/alb/:
 
 
@@ -130,6 +145,7 @@ resource "aws_lb" "app_alb" {
   subnets            = var.subnet_ids
   security_groups    = [var.sg_id]
 }
+
 Also create:
 
 Target group
@@ -139,21 +155,34 @@ Listener (HTTP 80)
 Attach EC2 instances to the target group
 
 🗄️ Step 4: Create RDS Module
+
+
 In modules/rds/:
 
 
 resource "aws_db_instance" "db" {
+  
   identifier        = "app-db"
+ 
   engine            = "mysql"
+ 
   instance_class    = "db.t3.micro"
+  
   allocated_storage = 20
+ 
   name              = var.db_name
+ 
   username          = var.db_user
+ 
   password          = var.db_password
+ 
   vpc_security_group_ids = [var.db_sg_id]
+ 
   db_subnet_group_name   = var.db_subnet_group
 }
 ⚙️ Step 5: Define Root Configuration
+
+
 In your root main.tf:
 
 
@@ -163,10 +192,12 @@ module "vpc" {
   ...
 }
 
+
 module "ec2" {
   source = "./modules/ec2"
   ...
 }
+
 
 module "alb" {
   source = "./modules/alb"
@@ -177,13 +208,18 @@ module "rds" {
   source = "./modules/rds"
   ...
 }
+
+
 🔑 Step 6: Handle Variables and Outputs
+
 Define all necessary variables in variables.tf and user-defined values in terraform.tfvars. Expose important outputs like:
 
 
 output "alb_dns_name" {
   value = module.alb.lb_dns_name
 }
+
+
 🚀 Step 7: Deploy the Infrastructure
 Run the following commands:
 
@@ -195,6 +231,8 @@ terraform apply
 Accept the plan, and wait for the infrastructure to be deployed.
 
 🔍 Step 8: Verify and Test
+
+
 Access your app using the ALB DNS output.
 
 Verify EC2 instances are running Nginx.
@@ -202,6 +240,8 @@ Verify EC2 instances are running Nginx.
 Check RDS connectivity and configuration in AWS Console.
 
 🧹 Step 9: Destroy Resources
+
+
 To avoid charges:
 
 
