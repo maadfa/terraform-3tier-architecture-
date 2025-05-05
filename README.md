@@ -1,4 +1,6 @@
 🚀 Beginner's Guide: Setting Up and Starting Your Terraform Project
+
+
 🎯 Goal: To guide beginners through the complete setup process of starting a Terraform project—from scratch—using Git Bash and VS Code.
 
 🧑‍💻 Step 1: Open Your Laptop and Prepare Your Workspace
@@ -7,6 +9,7 @@
 Create a folder to store your Terraform project:
 
 💡 For Windows Users:
+
 Press Windows + E to open File Explorer.
 
 Navigate to a location like Documents or Desktop.
