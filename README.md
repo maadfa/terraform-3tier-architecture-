@@ -151,9 +151,8 @@ Apply the configuration:
 
 terraform apply
 
-Type yes when prompted.
+Type yes .
 
-🌳 Bonus: Using Git for Version Control (Optional but Recommended)
 Initialize a Git repo:
 
 git init
