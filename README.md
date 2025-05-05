@@ -74,11 +74,15 @@ Hence,for creation of five fifferent folders ,ad touch before names of folders.
 
 touch main.tf variables.tf outputs.tf terraform.tfvars
 
+Similarly,mkdir is used to create folders
+
 mkdir modules
 
 cd modules
 
 mkdir vpc ec2 alb rds
+
+Note :Create folders by using mkdir command before creating files using touch command.
 
 This creates the base files and folders.
 
