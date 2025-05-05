@@ -144,7 +144,7 @@ terraform init
 Check what Terraform will do:
 
 
-terraform plan
+terraform plan(This is necessory to see the entire plan of what terraform is going to do)
 
 Apply the configuration:
 
