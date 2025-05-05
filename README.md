@@ -66,6 +66,10 @@ Now you’re inside your project folder via the terminal.
 
 Use Git Bash to create files:
 
+mkdir is command used in gitbash to create directories
+
+touch is command that is used in gitbash to create folders 
+
 touch main.tf variables.tf outputs.tf terraform.tfvars
 
 mkdir modules
