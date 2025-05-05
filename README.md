@@ -291,7 +291,7 @@ A VPC is like one's own private datacenter inside AWS.
 
 It isolates your resources from the public internet.
 
-One has to define your subnets, route tables, and IP ranges here.
+One has to define their subnets, route tables, and IP ranges here.
 
  
  2. Subnets (Public & Private)
