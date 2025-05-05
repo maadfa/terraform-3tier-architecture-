@@ -1,4 +1,166 @@
-<<<<<<< HEAD
+🚀 Beginner's Guide: Setting Up and Starting Your Terraform Project
+🎯 Goal: To guide beginners through the complete setup process of starting a Terraform project—from scratch—using Git Bash and VS Code.
+
+🧑‍💻 Step 1: Open Your Laptop and Prepare Your Workspace
+
+
+Create a folder to store your Terraform project:
+
+💡 For Windows Users:
+Press Windows + E to open File Explorer.
+
+Navigate to a location like Documents or Desktop.
+
+Right-click → New → Folder.
+
+Name the folder:
+
+
+terraform-3tier-project
+
+🧰 Step 2: Install Required Tools
+
+Before writing code, you’ll need a few tools:
+
+✅ 1. Install Git & Git Bash
+
+Download from: https://git-scm.com/downloads
+
+During installation, select "Use Git Bash only" when prompted for terminal preference.
+
+After install, right-click anywhere → choose Git Bash Here to open the terminal.
+
+✅ 2. Install VS Code
+
+Download from: https://code.visualstudio.com/
+
+Install with default options.
+
+Open it from the Start menu or desktop icon.
+
+✅ 3. Install Terraform
+
+Download from: https://developer.hashicorp.com/terraform/downloads
+
+Extract and add the path to your system’s environment variables.
+
+To verify:
+
+
+terraform -v
+
+📂 Step 3: Open Git Bash and Navigate to Your Folder
+
+Right-click on the terraform-3tier-project folder.
+
+Choose "Git Bash Here".
+
+You should see a terminal window open with a path like:
+
+
+~/Documents/terraform-3tier-project
+
+Now you’re inside your project folder via the terminal.
+
+🧱 Step 4: Create Your Terraform Files
+
+Use Git Bash to create files:
+
+touch main.tf variables.tf outputs.tf terraform.tfvars
+
+mkdir modules
+
+cd modules
+
+mkdir vpc ec2 alb rds
+
+This creates the base files and folders.
+
+📝 Step 5: Open the Project in VS Code
+
+Method 1: From Git Bash
+
+Inside your project folder, run:
+
+
+code .
+
+This opens the current folder in Visual Studio Code.
+
+If code is not recognized, follow these steps:
+
+In VS Code → Press Ctrl+Shift+P
+
+Type: Shell Command: Install 'code' command in PATH → Press Enter
+
+Restart Git Bash
+
+Method 2: From File Explorer
+Open VS Code.
+
+Click File → Open Folder.
+
+Select your terraform-3tier-project folder.
+
+📜 Step 6: Start Writing Your Terraform Code
+
+In VS Code, inside main.tf, write a sample Terraform block:
+
+
+provider "aws" {
+  region = "us-east-1"
+}
+In variables.tf, declare variables:
+
+
+variable "region" {
+  description = "AWS region"
+  default     = "us-east-1"
+}
+Save your files using Ctrl + S.
+
+🔧 Step 7: Initialize and Apply with Terraform
+Back in Git Bash:
+
+Initialize Terraform:
+
+
+terraform init
+
+Check what Terraform will do:
+
+
+terraform plan
+
+Apply the configuration:
+
+
+terraform apply
+
+Type yes when prompted.
+
+🌳 Bonus: Using Git for Version Control (Optional but Recommended)
+Initialize a Git repo:
+
+git init
+
+Add and commit your code:
+
+git add .
+
+git commit -m "Initial commit for 3-tier Terraform architecture"
+
+(Optional) Push to GitHub:
+
+Create a repo on GitHub.
+
+Follow the instructions to push:
+
+
+git remote add origin https://github.com/your-username/terraform-3tier-project.git
+
+git push -u origin main
+
 # 🌐 Three-Tier Web Application Infrastructure with Terraform
 
 This project demonstrates a fully automated and scalable **three-tier architecture** on AWS using **Terraform**.  
