@@ -69,9 +69,7 @@ Before you start make sure you have done all the work described below:
 ✅ Basic knowledge of Terraform and AWS
 
 🗂️ Project Structure
-css
-Copy
-Edit
+
 terraform-3tier-architecture/
 │
 ├── main.tf
@@ -89,9 +87,7 @@ Each module contains its own main.tf, variables.tf, and outputs.tf.
 🧱 Step 1: Create VPC Module
 Create modules/vpc/ with:
 
-hcl
-Copy
-Edit
+
 # modules/vpc/main.tf
 resource "aws_vpc" "main" {
   cidr_block = var.vpc_cidr
@@ -110,9 +106,7 @@ Route Tables
 🖥️ Step 2: Create EC2 Module
 In modules/ec2/:
 
-hcl
-Copy
-Edit
+
 resource "aws_instance" "app" {
   ami           = var.ami_id
   instance_type = var.instance_type
@@ -128,9 +122,7 @@ install_nginx.sh contains shell script to install and start Nginx.
 ⚖️ Step 3: Create Load Balancer Module
 In modules/alb/:
 
-h
-Copy
-Edit
+
 resource "aws_lb" "app_alb" {
   name               = "app-alb"
   internal           = false
@@ -149,9 +141,7 @@ Attach EC2 instances to the target group
 🗄️ Step 4: Create RDS Module
 In modules/rds/:
 
-hcl
-Copy
-Edit
+
 resource "aws_db_instance" "db" {
   identifier        = "app-db"
   engine            = "mysql"
@@ -166,9 +156,7 @@ resource "aws_db_instance" "db" {
 ⚙️ Step 5: Define Root Configuration
 In your root main.tf:
 
-hcl
-Copy
-Edit
+
 module "vpc" {
   source   = "./modules/vpc"
   vpc_cidr = "10.0.0.0/16"
@@ -192,18 +180,14 @@ module "rds" {
 🔑 Step 6: Handle Variables and Outputs
 Define all necessary variables in variables.tf and user-defined values in terraform.tfvars. Expose important outputs like:
 
-hcl
-Copy
-Edit
+
 output "alb_dns_name" {
   value = module.alb.lb_dns_name
 }
 🚀 Step 7: Deploy the Infrastructure
 Run the following commands:
 
-bash
-Copy
-Edit
+
 terraform init
 terraform validate
 terraform plan
@@ -220,8 +204,6 @@ Check RDS connectivity and configuration in AWS Console.
 🧹 Step 9: Destroy Resources
 To avoid charges:
 
-bash
-Copy
-Edit
+
 terraform destroy
 
