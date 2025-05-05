@@ -279,7 +279,127 @@ It includes a **frontend load balancer**, **Nginx-based application layer**, and
 
 
 =======
+
+# #Importance of each resource in the Three-Tier Terraform Project
+This guide explains the purpose behind each infrastructure component and setup step, so you understand why you're doing what you're doing.
+
+ 1. VPC (Virtual Private Cloud)
+ 
+ Why it's necessary:
+
+A VPC is like one's own private datacenter inside AWS.
+
+It isolates your resources from the public internet.
+
+One has to define your subnets, route tables, and IP ranges here.
+
+ 
+ 2. Subnets (Public & Private)
+
+ Why it's necessary:
+
+Public Subnet: These are responsible for the resources or manages  resources that must be internet-facing (e.g., Load Balancer).
+
+Private Subnet: They manage those resources that use internal services like EC2 and databases that should not be directly accessible from the internet or services that are not seen or accessed by users but are private.
+
+
+
+🔹 3. Internet Gateway & NAT Gateway
+
+Internet Gateway (IGW): Allows public subnets (like your Load Balancer) to connect to the internet.
+
+NAT Gateway: Lets private subnets (e.g., your EC2 app servers) to use outbound traffic (e.g., to download updates), without being publicly accessible.
+
+Your EC2 needs to install Nginx via the internet but shouldn’t be open to the public. NAT Gateway helps with that.
+
+🔹 4. Security Groups
+
+📌 Why it's necessary:
+
+Acts as a firewall for your AWS resources.
+
+Controls who can access what, e.g.:
+
+Only allow traffic on port 80 (HTTP) to the Load Balancer
+
+Only allow traffic from the Load Balancer to EC2
+
+Only allow EC2 to communicate  to RDS on port 3306 (MySQL)
+
+
+Without security groups, every server would be either fully open or fully closed.Security groups are essential compoenents as they allow only selective access to particular resources.
+
+🔹 5. EC2 Instances (App Layer with Nginx)
+
+📌 Why it's necessary:
+
+These are your actual servers that run your application.
+
+Nginx is installed here to start an app (e.g., a website or API).
+
+
+Think of EC2 as your laptop in the cloud, running your code. Nginx is like the software you install to show your website.
+
+🔹 6. User Data Script
+
+📌 Why it's necessary:
+
+Automates the installation of software (like Nginx) when the EC2 instance launches.
+
+Makes the server self-configuring.
+
+Instead of manually logging into each server and setting things up, we write a script and let it happen automatically—like a “setup wizard.”
+
+🔹 7. Application Load Balancer (ALB)
+📌 Why it's necessary:
+
+Sits in front of your EC2 instances.
+
+Distributes incoming traffic evenly across multiple servers.
+
+Ensures high availability and scalability.
+
+
+If your app is getting a lot of visitors, ALB makes sure no single server gets overloaded. 
+
+🔹 8. RDS (Relational Database Service)
+
+📌 Why it's necessary:
+
+Hosts your database (e.g., MySQL, PostgreSQL).
+
+Managed by AWS: includes backups, patching, scaling.
+
+Found in a private subnet for security.
+
+
+RDS is where your app stores its data—like usernames or orders. And it's managed by AWS, so you don’t need to be a database expert.
+
+🔹 9. Terraform Files & Modular Structure
+
+main.tf: Central configuration to put togather everything.
+
+variables.tf: Defines input values (like region, instance size).
+
+outputs.tf: Displays useful info after deployment (like public IPs).
+
+modules/: Keeps each component (VPC, EC2, ALB, etc.) in its own folder for reusability.
+
+
+Instead of one big messy file, we break things down into clean, reusable chunks. It’s like organizing your closet—makes life easier as your project grows.
+
+🔹 10. Terraform Commands (init, plan, apply)
+terraform init: Downloads required providers and sets up the environment.
+
+terraform plan: Shows what Terraform will do before making changes.
+
+terraform apply: Applies the infrastructure changes.
+
+
+ init is like  preparing the tools, plan as reviewing your blueprints, and apply as building the actual house
+ 
 ## Step by Step guide 
+
 
 Building a Three-Tier Web Application Infrastructure with Terraform on AWS
 
