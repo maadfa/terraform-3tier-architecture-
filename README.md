@@ -12,7 +12,7 @@ Create a folder to store your Terraform project:
 
 Press Windows + E to open File Explorer.
 
-Navigate to a location like Documents or Desktop.
+Go to a location like Documents or Desktop.
 
 Right-click → New → Folder.
 
