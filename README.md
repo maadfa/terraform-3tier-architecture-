@@ -163,7 +163,7 @@ git add .
 
 git commit -m "Initial commit for 3-tier Terraform architecture"
 
-(Optional) Push to GitHub:
+Push to GitHub:
 
 Create a repo on GitHub.
 
