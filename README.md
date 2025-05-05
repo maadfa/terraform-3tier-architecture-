@@ -233,7 +233,7 @@ Due to the interdependencies between components (e.g., ALB needs EC2, EC2 needs 
 
 ⚠ 5. Real-Cloud Costs and Resources
 
-AWS resources provisioned in the project (e.g., EC2 instances, RDS) use real costs. Users must learn to manage budgets and clean up resources after testing
+AWS resources used in the project (e.g., EC2 instances, RDS) use real costs. Users must learn to manage budgets and clean up resources after testing
 
 # 🌐 Three-Tier Web Application Infrastructure with Terraform
 
