@@ -285,7 +285,7 @@ Building a Three-Tier Web Application Infrastructure with Terraform on AWS
 
 📘 Overview
 
-This guide walks you through creating a three-tier architecture on AWS using Terraform, which includes:
+This guide guides you through creating a three-tier architecture on AWS using Terraform, which includes:
 
 Frontend Layer: Application Load Balancer (ALB)
 
