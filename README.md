@@ -106,6 +106,7 @@ Type: Shell Command: Install 'code' command in PATH → Press Enter
 Restart Git Bash
 
 Method 2: From File Explorer
+
 Open VS Code.
 
 Click File → Open Folder.
