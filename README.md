@@ -68,7 +68,9 @@ Use Git Bash to create files:
 
 mkdir is command used in gitbash to create directories
 
-touch is command that is used in gitbash to create folders 
+touch is command that is used in gitbash to create folders
+
+Hence,for creation of five fifferent folders ,ad touch before names of folders.
 
 touch main.tf variables.tf outputs.tf terraform.tfvars
 
